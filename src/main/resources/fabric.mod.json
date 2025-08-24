@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "fix2b2tghostitems",
+  "version": "${version}",
+  "name": "Fix 2b2t Ghost Items",
+  "description": "Fixes the occasional ghost items, when using Shulkers or Bundles for good!",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fix2b2tghostitems/icon.png",
+  "environment": "client",
+  "entrypoints": {},
+  "mixins": [
+    "fix2b2tghostitems.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": ">=${minecraft_version}"
+  }
+}
