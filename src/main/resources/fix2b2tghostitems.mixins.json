@@ -6,7 +6,10 @@
   "mixins": [
   ],
   "client": [
-    "NoUnstackableDragMixin"
+    "NoUnstackableDragMixin",
+    "ScrollZoomCameraMixin",
+    "ScrollZoomGameRendererMixin",
+    "ScrollZoomMouseMixin"
   ],
   "injectors": {
     "defaultRequire": 1
