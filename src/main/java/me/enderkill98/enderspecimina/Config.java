@@ -45,9 +45,9 @@ public class Config {
     }
 
     public static ConfigClassHandler<Config> HANDLER = ConfigClassHandler.createBuilder(Config.class)
-            .id(Identifier.of("enderstuff", "config"))
+            .id(Identifier.of("enderspecimina", "config"))
                     .serializer(config -> GsonConfigSerializerBuilder.create(config)
-                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("enderstuff.json5"))
+                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("enderspecimina.json5"))
                             .appendGsonBuilder(GsonBuilder::setPrettyPrinting) // not needed, pretty print by default
                             .setJson5(true)
                             .build())
