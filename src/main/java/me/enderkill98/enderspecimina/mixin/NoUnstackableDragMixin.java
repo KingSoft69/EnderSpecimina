@@ -1,4 +1,4 @@
-package me.enderkill98.fix2b2tghostitems.mixin;
+package me.enderkill98.enderspecimina.mixin;
 
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.screen.ScreenHandler;

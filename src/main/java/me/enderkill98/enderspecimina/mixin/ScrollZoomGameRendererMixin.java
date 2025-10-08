@@ -1,6 +1,6 @@
-package me.enderkill98.fix2b2tghostitems.mixin;
+package me.enderkill98.enderspecimina.mixin;
 
-import me.enderkill98.fix2b2tghostitems.Mod;
+import me.enderkill98.enderspecimina.Mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.GameRenderer;
@@ -19,7 +19,7 @@ public abstract class ScrollZoomGameRendererMixin {
 
     @Inject(at = @At("HEAD"), method = "updateFovMultiplier", cancellable = true)
     public void updateFovMultiplier(CallbackInfo info) {
-        if(me.enderkill98.fix2b2tghostitems.Mod.scrollZoom.isActive() && Mod.scrollZoom.zoomStep > 0) {
+        if(Mod.scrollZoom.isActive() && Mod.scrollZoom.zoomStep > 0) {
             // Re-run code to remove limits imposed there
             float f = 1.0F;
             MinecraftClient client = MinecraftClient.getInstance();

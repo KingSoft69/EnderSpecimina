@@ -1,4 +1,4 @@
-package me.enderkill98.fix2b2tghostitems;
+package me.enderkill98.enderspecimina;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;

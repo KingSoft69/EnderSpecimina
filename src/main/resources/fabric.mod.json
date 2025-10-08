@@ -1,22 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "fix2b2tghostitems",
+  "id": "enderspecimina",
   "version": "${version}",
-  "name": "Fix 2b2t Ghost Items",
-  "description": "Fixes the occasional ghost items, when using Shulkers or Bundles for good!",
+  "name": "EnderSpecimina",
+  "description": "Public stuff I don't wanna make separate mods for. Most is 2b2t focused.",
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/fix2b2tghostitems/icon.png",
+  "icon": "assets/enderspecimina/icon.png",
   "environment": "client",
   "entrypoints": {},
   "mixins": [
-    "fix2b2tghostitems.mixins.json"
+    "enderspecimina.mixins.json"
   ],
-  "accessWidener": "fix2b2tghostitems.accesswidener",
+  "accessWidener": "enderspecimina.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "minecraft": ">=${minecraft_version}",
     "fabric": "*"
+  },
+  "conflicts": {
+    "fix2b2tghostitems": "*"
   }
 }

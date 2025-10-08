@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.enderkill98.fix2b2tghostitems.mixin",
+  "package": "me.enderkill98.enderspecimina.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
   ],

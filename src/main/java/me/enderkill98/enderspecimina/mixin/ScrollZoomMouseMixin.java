@@ -1,6 +1,6 @@
-package me.enderkill98.fix2b2tghostitems.mixin;
+package me.enderkill98.enderspecimina.mixin;
 
-import me.enderkill98.fix2b2tghostitems.Mod;
+import me.enderkill98.enderspecimina.Mod;
 import net.minecraft.client.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

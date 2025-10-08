@@ -1,21 +1,21 @@
-package me.enderkill98.fix2b2tghostitems.mixin;
+package me.enderkill98.enderspecimina.mixin;
 
-import me.enderkill98.fix2b2tghostitems.Mod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import me.enderkill98.enderspecimina.Mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Camera.class)
 public abstract class ScrollZoomCameraMixin {
 
-    @Redirect(method = "update",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;clipToSpace(F)F"))
-    public float clipToSpaceFromUpdate(Camera instance, float desiredCameraDistance) {
+    @WrapOperation(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;clipToSpace(F)F"))
+    public float clipToSpaceFromUpdate(Camera instance, float desiredCameraDistance, Operation<Float> original) {
         if(!Mod.scrollZoom.isActive() || Mod.scrollZoom.zoomStep >= 0)
-            return instance.clipToSpace(desiredCameraDistance);
+            return original.call(instance, desiredCameraDistance);
         float interpolatedExtraDist;
         if(Mod.scrollZoom.previousTickZoomStep <= 1) {
             double previousFactor = Mod.scrollZoom.getPreviousZoomMultiplierFactor();

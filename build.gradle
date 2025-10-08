@@ -95,5 +95,5 @@ publishing {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/fix2b2tghostitems.accesswidener")
+    accessWidenerPath = file("src/main/resources/enderspecimina.accesswidener")
 }
