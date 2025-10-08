@@ -29,6 +29,7 @@ public class ScrollZoom implements ClientTickEvents.StartTick {
      * @return Whether to cancel the scroll (not handle elsewhere)
      */
     public boolean onScroll(double vertical) {
+        if(!Config.HANDLER.instance().scrollZoom) return false;
         if(!Screen.hasAltDown() || Screen.hasControlDown()) return false;
         //if(Mod.INSTANCE.selection.isActive() && Mod.INSTANCE.selection.isHoldingWand(MinecraftClient.getInstance().player))
         //    return false; // Let Selection handle all scrolls!

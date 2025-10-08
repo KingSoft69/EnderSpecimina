@@ -9,7 +9,14 @@
   "license": "MIT",
   "icon": "assets/enderspecimina/icon.png",
   "environment": "client",
-  "entrypoints": {},
+  "entrypoints": {
+    "client": [
+      "me.enderkill98.enderspecimina.Mod"
+    ],
+    "modmenu": [
+      "me.enderkill98.enderspecimina.ModMenuIntegration"
+    ]
+  },
   "mixins": [
     "enderspecimina.mixins.json"
   ],

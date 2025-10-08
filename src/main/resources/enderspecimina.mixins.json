@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "NoUnstackableDragMixin",
+    "FixBundlesMixin",
+    "FixGhostItemsMixin",
     "ScrollZoomCameraMixin",
     "ScrollZoomGameRendererMixin",
     "ScrollZoomMouseMixin"
