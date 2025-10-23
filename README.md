@@ -8,6 +8,7 @@ Current features:
  - Fix 2b2t Ghost Items
  - Fix 2b2t Bundles 
  - Scroll Zoom
+ - Highway Visualization on Xaero Mini-/World-Map (from [HWU's Desmos](https://www.desmos.com/calculator/siw620fvnu) for 2b2t Nether)
 
 See descriptions in Mod for explanations and more details on these Specimina.
 
