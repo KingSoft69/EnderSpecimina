@@ -191,6 +191,7 @@ public class HighwayVisualizer implements ClientTickEvents.EndTick, Renderable {
 
     public void updateRenderables() {
         RenderManager.removeAllRenderables(HighwayVisualizer.class);
+        if(!active) return;
         RenderManager.addRenderable(HighwayVisualizer.class, this);
     }
 
