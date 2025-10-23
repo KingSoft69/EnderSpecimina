@@ -3,14 +3,18 @@
   "minVersion": "0.8",
   "package": "me.enderkill98.enderspecimina.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "me.enderkill98.enderspecimina.MixinPlugin",
   "mixins": [
+    "mods.xaerominimap.RenderMinimapMixin"
   ],
   "client": [
     "FixBundlesMixin",
     "FixGhostItemsMixin",
     "ScrollZoomCameraMixin",
     "ScrollZoomGameRendererMixin",
-    "ScrollZoomMouseMixin"
+    "ScrollZoomMouseMixin",
+    "mods.xaeroworldmap.HighwayHoverTooltipMixin",
+    "mods.xaeroworldmap.RenderWorldMapMixin"
   ],
   "injectors": {
     "defaultRequire": 1

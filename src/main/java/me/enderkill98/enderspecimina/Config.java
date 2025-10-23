@@ -59,4 +59,13 @@ public class Config {
     public boolean scrollZoom = true;
     @SerialEntry(comment = "Make bundles usable on 2b2t")
     public ActivationPolicy fix2b2tBundles = ActivationPolicy.Only2b2t;
+
+    @SerialEntry(comment = "Show Highways on Mini-/World-Map")
+    public boolean highwaysEnabled = true;
+    @SerialEntry(comment = "More detailed names")
+    public boolean highwaysDetailed = false;
+
+    @SerialEntry(comment = "Specify an alternate url to source highway data from. Best keep empty.")
+    public String highwaysOverwriteSourceUrl = "";
+
 }

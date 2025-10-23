@@ -96,6 +96,28 @@ public class ModMenuIntegration implements ModMenuApi {
                                         .controller(TickBoxControllerBuilder::create)
                                         .build()
                                 )
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(text("Highways"))
+                                        .binding(Config.HANDLER.defaults().highwaysEnabled, () -> Config.HANDLER.instance().highwaysEnabled, (newVal) -> {
+                                            Config.HANDLER.instance().highwaysEnabled = newVal;
+                                            Mod.highwayVisualizer.setActive(newVal);
+                                        })
+                                        .description(textOptDesc("""
+                                                Display Highways on Xaero Mini-/World-Map.
+                                                
+                                                The mod will attempt to use the newest data from the officially linked Desmos-Map
+                                                in the HWU-Discord. So these highways will be way more recent than XaeroPlus ones.
+                                                """))
+                                        .controller(TickBoxControllerBuilder::create)
+                                        .build()
+                                )
+                                .option(Option.<Boolean>createBuilder()
+                                        .name(text("Highways Detailed Names"))
+                                        .binding(Config.HANDLER.defaults().highwaysDetailed, () -> Config.HANDLER.instance().highwaysDetailed, (newVal) -> Config.HANDLER.instance().highwaysDetailed = newVal)
+                                        .description(textOptDesc("Display longer, more informative names when hovering over highways."))
+                                        .controller(TickBoxControllerBuilder::create)
+                                        .build()
+                                )
                                 .build())
                         .build()
                 )

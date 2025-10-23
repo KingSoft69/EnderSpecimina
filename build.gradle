@@ -60,6 +60,9 @@ dependencies {
 
     modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+    modApi "maven.modrinth:xaeros-minimap:25.1.0_Fabric_1.21.4"
+    modApi "maven.modrinth:xaeros-world-map:1.39.4_Fabric_1.21.4"
 }
 
 processResources {

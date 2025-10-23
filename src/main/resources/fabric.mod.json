@@ -28,5 +28,9 @@
   },
   "conflicts": {
     "fix2b2tghostitems": "*"
+  },
+  "recommends": {
+    "xaerominimap": "*",
+    "xaeroworldmap": "*"
   }
 }
