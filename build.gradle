@@ -45,13 +45,48 @@ dependencies {
 }
 
 processResources {
-    // Build a robust property map for template expansion in fabric.mod.json
+    // Properties used by fabric.mod.json; avoid quoted keys to keep Groovy happy
     def expandProps = [
-        "version"           : project.version,
-        "minecraft_version" : project.findProperty("minecraft_version"),
-        "loader_version"    : project.findProperty("loader_version"),
-        "fabric_version"    : project.findProperty("fabric_version"),
-        "yacl_version"      : project.findProperty("yacl_version"),
-        "modmenu_version"   : project.findProperty("modmenu_version"),
-        "archives_base_name": project.findProperty("archives_base_name"),
-        "maven_group"       : project.findProperty("maven_group
+        version            : project.version,
+        minecraft_version  : project.findProperty('minecraft_version'),
+        loader_version     : project.findProperty('loader_version'),
+        fabric_version     : project.findProperty('fabric_version'),
+        yacl_version       : project.findProperty('yacl_version'),
+        modmenu_version    : project.findProperty('modmenu_version'),
+        archives_base_name : project.findProperty('archives_base_name'),
+        maven_group        : project.findProperty('maven_group')
+    ].findAll { it.value != null }
+
+    // Re-run when any of these change
+    inputs.properties(expandProps)
+
+    filesMatching("fabric.mod.json") {
+        expand(expandProps)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        // configure if you publish; safe to leave empty
+    }
+}
