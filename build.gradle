@@ -13,19 +13,67 @@ base {
 repositories {
     mavenCentral()
 
-    // Modrinth for Xaero's + ModMenu (compileOnly)
-    maven { url = "https://api.modrinth.com/maven" }
+    // Fabric API + Loader
+    maven { url = "https://maven.fabricmc.net/" }
 
     // YACL
     maven { url = "https://maven.isxander.dev/releases" }
 
-    // ModMenu (sometimes resolved from Terraformers)
+    // Mod Menu
     maven { url = "https://maven.terraformersmc.com/" }
+
+    // Xaero’s
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
-    // Core (versions come from gradle.properties)
+    // Core dependencies (versions from gradle.properties)
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"_
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // YACL config library
+    modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+
+    // Mod Menu — optional, not bundled
+    modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+    // Xaero’s UI mods — optional, not bundled
+    modCompileOnly "maven.modrinth:xaeros-minimap:25.2.0_Fabric_1.21.5"
+    modCompileOnly "maven.modrinth:xaeros-world-map:1.39.5_Fabric_1.21.5"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        // Add Maven repo here if you want publishing (Leave empty otherwise)
+    }
+}
