@@ -22,58 +22,36 @@ repositories {
     // Mod Menu
     maven { url = "https://maven.terraformersmc.com/" }
 
-    // Xaero’s
+    // Xaero’s (optional UI mods)
     maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
-    // Core dependencies (versions from gradle.properties)
+    // Core (versions come from gradle.properties)
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    // YACL config library
+    // Libraries
     modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 
-    // Mod Menu — optional, not bundled
+    // Mod Menu — optional (RC for 1.21.5)
     modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-    // Xaero’s UI mods — optional, not bundled
+    // Xaero’s — optional UI mods (don’t gate the build)
     modCompileOnly "maven.modrinth:xaeros-minimap:25.2.0_Fabric_1.21.5"
     modCompileOnly "maven.modrinth:xaeros-world-map:1.39.5_Fabric_1.21.5"
 }
 
 processResources {
-    inputs.property "version", project.version
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.release = 21
-}
-
-java {
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
-    withSourcesJar()
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archives_base_name}" }
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-
-    repositories {
-        // Add Maven repo here if you want publishing (Leave empty otherwise)
-    }
-}
+    // Build a robust property map for template expansion in fabric.mod.json
+    def expandProps = [
+        "version"           : project.version,
+        "minecraft_version" : project.findProperty("minecraft_version"),
+        "loader_version"    : project.findProperty("loader_version"),
+        "fabric_version"    : project.findProperty("fabric_version"),
+        "yacl_version"      : project.findProperty("yacl_version"),
+        "modmenu_version"   : project.findProperty("modmenu_version"),
+        "archives_base_name": project.findProperty("archives_base_name"),
+        "maven_group"       : project.findProperty("maven_group
